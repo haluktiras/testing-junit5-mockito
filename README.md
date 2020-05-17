@@ -16,9 +16,11 @@ This source code repository contains JUnit 5 and Mockito test examples with Mave
     - Test Interfaces
     - Useful 3rd party libraries that works with Junit5 such as Hamcrest and AssertJ
     - Parameterized Tests with Junit
+* Mockito basics
+    - Creating mockito mocks with annotations and extentions
+    - Injecting Mocks with mockito
 
 ## ToDo's
 * Mockito basics
-    - Creating mockito mocks with annotations and extentions
     - Writing tests and verifying interactions with mockito
     - Returining values from mockito mocks

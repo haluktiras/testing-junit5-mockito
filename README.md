@@ -6,7 +6,15 @@ This source code repository contains JUnit 5 and Mockito test examples with Mave
 * Java 11
 * Maven 3.5.2
 * Junit 5
-* Mockito 2.23.0 
+* Mockito 2.23.0
+
+## Test Coverage
+|  Element                         | Class %    | Method %   |  Line %    |
+|:--------------------------------:|:-----------:|:-----------:|:-----------:|
+| `com.ht.petclinic.controllers`   |  50%(3/6)   |  15%(4/26)  |   9%(9/91)  |
+| `com.ht.petclinic.model`         |  44%(4/9)   |  18%(11/58) |  50%(3/6)   |
+| `com.ht.petclinic.services`      |  50%(3/6)   |  50%(3/6)   |  50%(3/6)   |
+| `com.ht.petclinic.springjpa`     |  50%(3/6)   |  50%(3/6)   |  50%(3/6)   |
 
 ## Done's
 * Unit Tests and Integration Tests has been completed with Junit5
@@ -22,8 +30,11 @@ This source code repository contains JUnit 5 and Mockito test examples with Mave
     - Writing tests and verifying interactions with mockito
     - Verify Interactions with mockito mocks
     - Returining values from mockito mocks
+    - Write tests for all service classes and try to increase test coverage
+        * Wrote tests for VisitSDJpaService, VetSDJpaService and SpecialtySDJpaService
     
 ## ToDo's
 * Mockito basics
     - Write Mockito Tests for Vet Service
     - Write tests for all service classes and try to increase test coverage
+        *  Remainings service classes that were not wrote test yet: PetTypeSDJpaService, PetSDJpaService and OwnerSDJpaService

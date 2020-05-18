@@ -40,7 +40,6 @@ class VisitSDJpaServiceTest {
     @Test
     void findAll_test() {
         Set<Visit> visitSet = new HashSet<>();
-
         visitSet.add(visit);
 
         when(visitRepository.findAll()).thenReturn(visitSet);

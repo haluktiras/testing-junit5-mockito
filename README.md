@@ -21,8 +21,9 @@ This source code repository contains JUnit 5 and Mockito test examples with Mave
     - Injecting Mocks with mockito
     - Writing tests and verifying interactions with mockito
     - Verify Interactions with mockito mocks
-
+    - Returining values from mockito mocks
+    
 ## ToDo's
 * Mockito basics
-    - Returining values from mockito mocks
     - Write Mockito Tests for Vet Service
+    - Write tests for all service classes and try to increase test coverage

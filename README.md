@@ -32,6 +32,7 @@ This source code repository contains JUnit 5 and Mockito test examples with Mave
     - Returining values from mockito mocks
     - Write tests for all service classes and try to increase test coverage
         * Wrote tests for all service classes
+    - Refactorings with BDD testing approach to PetTypeSDJPaServiceTest.java , SpecialitySDJpaServiceTest.java and VisitSDJpaServiceTest.java    
     
 ## ToDo's
 * Mockito basics

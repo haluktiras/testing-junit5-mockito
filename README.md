@@ -14,7 +14,7 @@ This source code repository contains JUnit 5 and Mockito test examples with Mave
 | `com.ht.petclinic.controllers`   |  50% (3/6)   |  15% (4/26)  |   9% (9/91)  |
 | `com.ht.petclinic.model`         |  44% (4/9)   |  18% (11/58) |  17% (20/112)|
 | `com.ht.petclinic.services`      |  57% (4/7)   |  21% (9/42)  |  22% (22/98) |
-| `com.ht.petclinic.springjpa`     |  66% (4/6)   |  68% (26/38) |  68% (52/76) |
+| `com.ht.petclinic.springjpa`     | 100% (6/6)   | 100% (38/38) | 100% (76/76) |
 
 ## Done's
 * Unit Tests and Integration Tests has been completed with Junit5

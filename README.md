@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/haluktiras/testing-junit5-mockito.svg?style=svg)](https://app.circleci.com/pipelines/github/haluktiras/testing-junit5-mockito)
+
 # Introduction to JUnit 5 with Mockito
 
 This source code repository contains JUnit 5 and Mockito test examples with Maven. Spring framework was not used for learning process. Fake implementation has been added.

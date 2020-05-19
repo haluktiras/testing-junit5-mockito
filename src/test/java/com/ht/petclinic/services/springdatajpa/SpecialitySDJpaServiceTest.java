@@ -16,6 +16,8 @@ import java.util.Optional;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,115 +33,143 @@ class SpecialitySDJpaServiceTest {
 
     @BeforeEach
     void setUp() {
+        //given forEach
         speciality = new Speciality();
     }
 
     @Test
     void findAll_test() {
+        //given
         Set<Speciality> specialtySet = new HashSet<>();
         specialtySet.add(speciality);
+        given(specialtyRepository.findAll()).willReturn(specialtySet);
 
-        when(specialtyRepository.findAll()).thenReturn(specialtySet);
-
+        //when
         Set<Speciality> foundSpecialitySet = service.findAll();
 
-        verify(specialtyRepository).findAll();
-
+        //then
+        then(specialtyRepository).should().findAll();
         assertThat(foundSpecialitySet).isNotNull();
         assertThat(foundSpecialitySet).hasSize(1);
     }
 
     @Test
     void testDeleteByObject() {
+        //given
         Speciality speciality = new Speciality();
 
+        //when
         service.delete(speciality);
 
-        verify(specialtyRepository).delete(any(Speciality.class));
+        //then
+        then(specialtyRepository).should().delete(any(Speciality.class));
     }
 
     @Test
     void findByIdTest() {
-        Speciality speciality = new Speciality();
+        //given
+        Speciality specialty = new Speciality();
+        given(specialtyRepository.findById(anyLong())).willReturn(Optional.of(specialty));
 
-        when(specialtyRepository.findById(1L)).thenReturn(Optional.of(speciality));
-
+        //when
         Speciality foundSpecialty = service.findById(1L);
 
+        //then
         assertThat(foundSpecialty).isNotNull();
-
-        verify(specialtyRepository).findById(anyLong());
+        then(specialtyRepository).should().findById(1L);
+        then(specialtyRepository).shouldHaveNoMoreInteractions();
     }
 
     @Test
     void save_test() {
-        when(specialtyRepository.save(any(Speciality.class))).thenReturn(speciality);
+        //given
+        given(specialtyRepository.save(any(Speciality.class))).willReturn(speciality);
 
+        //when
         Speciality savedSpecialty = service.save(speciality);
 
-        verify(specialtyRepository).save(any(Speciality.class));
-
+        //then
+        then(specialtyRepository).should().save(any(Speciality.class));
         assertThat(savedSpecialty).isNotNull();
     }
 
     @Test
     void testDelete() {
+        //given
+        //when
         service.delete(speciality);
-        verify(specialtyRepository).delete(speciality);
+
+        //then
+        then(specialtyRepository).should().delete(speciality);
+
         /* could be like this
-        service.delete(any());
-        verify(specialtyRepository).delete(any());
+        service.delete(any());                           <---- any()
+        verify(specialtyRepository).delete(any());       <---- any() and verify instead of then()
          */
     }
 
     @DisplayName("deleteById Tests")
     @Nested
-    class deleteById{
+    class deleteById {
 
         @DisplayName("deleteById should verify")
         @Test
         void deleteById() {
+            //given
+            //when
             service.deleteById(1L);
 
-            verify(specialtyRepository).deleteById(1L);
+            //then
+            then(specialtyRepository).should().deleteById(1L);
         }
 
         @DisplayName("deleteById should invoke 2 times")
         @Test
         void deleteByIdInvokeTwoTimes() {
+            //given
+            //when
             service.deleteById(1L);
             service.deleteById(1L);
 
-            verify(specialtyRepository, times(2)).deleteById(1L);
+            //then
+            then(specialtyRepository).should(times(2)).deleteById(1L);
         }
 
         @DisplayName("deleteById should at least once")
         @Test
         void deleteByIdInvokeAtLeastOnce() {
+            //given
+            //when
             service.deleteById(1L);
             service.deleteById(1L);
 
-            verify(specialtyRepository, atLeastOnce()).deleteById(1L);
+            //then
+            then(specialtyRepository).should(atLeastOnce()).deleteById(1L);
         }
 
         @DisplayName("deleteById should invoke at most 5")
         @Test
         void deleteByIdInvokeAtMost() {
+            //given
+            //when
             service.deleteById(1L);
             service.deleteById(1L);
 
-            verify(specialtyRepository, atMost(5)).deleteById(1L);
+            //then
+            then(specialtyRepository).should(atMost(5)).deleteById(1L);
         }
 
         @DisplayName("deleteById should invoke never")
         @Test
         void deleteByIdInvokeNever() {
+            //given
+            //when
             service.deleteById(1L);
             service.deleteById(1L);
 
-            verify(specialtyRepository, atLeastOnce()).deleteById(1L);
-
-            verify(specialtyRepository, never()).deleteById(5L);
+            //then
+            then(specialtyRepository).should(atLeastOnce()).deleteById(1L);
+            then(specialtyRepository).should(never()).deleteById(5L);
         }
     }
 }
